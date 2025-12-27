@@ -1,0 +1,55 @@
+# AWS Global Infrastructure — High Availability & Fault Tolerance
+
+## Core Idea
+AWS designs its global infrastructure to ensure **high availability** and **fault tolerance**, so applications remain accessible even when failures occur.
+
+## Business Analogy (Coffee Shop)
+- A single coffee shop failure (power outage, equipment damage) halts business.
+- A **chain of shops** ensures customers are still served elsewhere.
+- Result: Business continuity despite local failures.
+
+## Why a Single Data Center Is Risky
+- One data center = single point of failure.
+- Power outages, network cuts, or natural disasters can bring everything down.
+- Modern applications require resilience by design.
+
+## High Availability (HA)
+- Ensures applications stay accessible with **minimal downtime**.
+- If one component fails, another immediately takes over.
+- Focus: **continuity of service**.
+
+## Fault Tolerance (FT)
+- Goes beyond HA by allowing systems to function even if **multiple components fail**.
+- Resilience is built into every layer.
+- Goal: **no single failure should break the system**.
+
+## AWS Global Design
+AWS achieves HA and FT through geographic distribution.
+
+### Regions
+- Separate geographic locations around the world.
+- Examples: Paris, Tokyo, São Paulo, Dublin, Ohio.
+- Designed to be close to customers to reduce latency.
+
+### Availability Zones (AZs)
+- Each Region contains **3 or more AZs**.
+- AZs are physically separated to avoid shared failures.
+- Each AZ has independent power, networking, and connectivity.
+
+### Data Centers
+- AZs contain one or more discrete data centers.
+- Built with redundancy at every infrastructure layer.
+
+## Multi-Region Strategy
+- Critical workloads often run across **multiple Regions**.
+- If one Region fails, traffic can fail over to another.
+- Enables disaster recovery at a global scale.
+
+## Key Takeaways
+- High availability keeps services running during failures.
+- Fault tolerance prevents cascading outages.
+- Regions and AZs are the backbone of AWS reliability.
+- Designing for failure is a **best practice**, not an edge case.
+
+## Bottom Line
+AWS’s global infrastructure ensures your applications stay online—even when disasters happen or lattes spill.
