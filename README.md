@@ -1,2 +1,2 @@
-# cloud-notes-
+# cloud-notes
 Personalised notes 
