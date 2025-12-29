@@ -1,5 +1,5 @@
 ## What is Amazon EC2?
-**:contentReference[oaicite:0]{index=0} (EC2)** is AWS’s core **compute service** that provides resizable virtual servers, known as **instances**, to run applications in the cloud.
+(EC2) is AWS’s core **compute service** that provides resizable virtual servers, known as **instances**, to run applications in the cloud.
 
 ## Why Compute Matters
 Most businesses follow the **client–server model**:
