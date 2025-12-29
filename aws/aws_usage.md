@@ -92,7 +92,7 @@ Whether you use:
 - the **CLI**
 - or the **SDK**
 
-You are always interacting with **AWS APIs hosted by :contentReference[oaicite:0]{index=0}**.
+You are always interacting with **AWS APIs hosted by Amazon**.
 
 ## Key Takeaways
 - AWS is API-driven by design
