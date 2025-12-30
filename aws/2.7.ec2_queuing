@@ -1,0 +1,104 @@
+# Messaging & Queuing — SQS vs SNS
+
+## Problem
+Direct communication between components (tight coupling) causes:
+- Blocking when one component is busy or down
+- Dropped requests
+- Cascading failures
+
+---
+
+## Core Concept: Loose Coupling
+Introduce a **buffer (queue)** between components.
+
+- Producers send messages to the buffer
+- Consumers process messages independently
+- Components no longer depend on each other’s availability
+
+**Result:** More resilient, scalable systems.
+
+---
+
+## Tight vs Loose Coupling
+
+### Tightly Coupled
+- App A sends directly to App B
+- If App B fails → App A errors
+- Failures propagate
+
+### Loosely Coupled
+- App A sends messages to a queue
+- App B processes when ready
+- App A is unaffected by App B failures
+
+---
+
+## Amazon SQS (Simple Queue Service)
+
+### What It Is
+- Fully managed **message queue**
+- Stores messages until they are processed
+
+### Key Characteristics
+- Messages are **durable**
+- Consumers pull messages when ready
+- Scales automatically
+- No message loss if consumers are unavailable
+
+### Mental Model
+- Order board in a coffee shop
+- Orders wait until a barista is free
+
+### Best For
+- Asynchronous processing
+- Decoupling application components
+- Handling traffic spikes safely
+
+---
+
+## Amazon SNS (Simple Notification Service)
+
+### What It Is
+- Fully managed **publish/subscribe messaging**
+- Push-based, not pull-based
+
+### Key Characteristics
+- Messages are delivered immediately
+- No long-term storage for later pickup
+- Supports fan-out to multiple targets
+
+### Delivery Targets
+- SQS queues
+- Lambda
+- HTTP/S endpoints
+- SMS, email, mobile push
+
+### Mental Model
+- Barista calling out an order
+- Notification must be handled now
+
+---
+
+## Key Difference (At a Glance)
+
+| Feature | SQS | SNS |
+|------|-----|-----|
+| Message Storage | Yes | No |
+| Delivery Model | Pull | Push |
+| Timing | When consumer is ready | Immediately |
+| Failure Tolerance | High | Depends on subscriber |
+| Typical Use | Work queues | Notifications & fan-out |
+
+---
+
+## How They’re Often Used Together
+- SNS publishes an event
+- Multiple SQS queues subscribe
+- Each consumer processes independently
+
+---
+
+## Key Takeaway
+- **SQS** decouples systems by buffering work  
+- **SNS** broadcasts events instantly  
+- Both enable **loosely coupled, fault-tolerant architectures**
