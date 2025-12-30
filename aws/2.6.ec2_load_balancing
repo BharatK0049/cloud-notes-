@@ -1,0 +1,92 @@
+# EC2 — Load Balancing (Elastic Load Balancing)
+
+## Problem
+- Auto Scaling adds/removes instances
+- Traffic is **unevenly distributed**
+- Some instances are overloaded, others idle
+- Frontend and backend instances become tightly coupled
+
+---
+
+## Core Concept: Load Balancing
+A **load balancer**:
+- Receives incoming requests
+- Distributes them across multiple EC2 instances
+- Prevents overload and idle capacity
+- Improves performance and availability
+
+---
+
+## Why Load Balancing Is Needed
+Without a load balancer:
+- Users may hit the same instance repeatedly
+- Frontend must track all backend instances
+- Scaling becomes complex and error-prone
+
+With a load balancer:
+- Traffic is evenly distributed
+- Instances can scale independently
+- Architecture becomes simpler and more resilient
+
+---
+
+## Elastic Load Balancing (ELB)
+
+### What ELB Does
+- AWS-managed load balancing service
+- Automatically distributes traffic
+- Scales up or down with traffic
+- No manual patching, upgrades, or maintenance
+
+### Key Characteristics
+- Handles **internal and external** traffic
+- Uses intelligent routing strategies
+- Regional service (single endpoint per tier)
+- Integrates seamlessly with Auto Scaling
+
+---
+
+## Decoupled Architecture with ELB
+
+### Without ELB
+- Frontend must know every backend instance
+- New backend instances must register everywhere
+- Doesn’t scale well at large sizes
+
+### With ELB
+- Frontend sends traffic to **one ELB endpoint**
+- ELB routes traffic to healthy backend instances
+- Backend instances register/deregister automatically
+- Frontend remains unaware of scaling events
+
+---
+
+## Scaling with ELB
+- New backend instance launches
+- Instance signals readiness to ELB
+- ELB starts routing traffic to it
+- No frontend changes required
+
+---
+
+## Benefits
+- Even traffic distribution
+- Higher availability
+- Better performance
+- Simplified architecture
+- Independent scaling per tier
+
+---
+
+## Best Practices
+- Always place ELB in front of EC2 fleets
+- Combine ELB with Auto Scaling
+- Treat each application tier as independent
+- Avoid direct instance-to-instance dependency
+
+---
+
+## Key Takeaway
+**Auto Scaling adjusts capacity.  
+ELB distributes traffic.  
+Together, they enable scalable, decoupled, and resilient architectures.**
